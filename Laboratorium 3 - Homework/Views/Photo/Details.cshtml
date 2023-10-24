@@ -1,0 +1,25 @@
+﻿@model Photo
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h3>Data i godzina</h3>
+<p>@Model.DateAndTime</p>
+<h3>Opis</h3>
+<p>@Model.Description</p>
+<h3>Aparat</h3>
+<p>@Model.Camera</p>
+<h3>Autor</h3>
+<p>@Model.Author</p>
+<h3>Rozdzielczość</h3>
+<p>@Model.Resolution</p>
+<h3>Format</h3>
+<p>@Model.Format</p>
+
+
+
+<form asp-action="Details">
+    <button class="btn btn-primary" type="submit">Wróć</button>
+</form>

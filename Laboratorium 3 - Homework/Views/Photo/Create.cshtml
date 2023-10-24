@@ -1,0 +1,55 @@
+﻿@model Photo
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Dodaj nowe zdjęcie</h1>
+
+<form asp-controller="Photo" asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="DateAndTime">Data i czas*</label>
+        <input class="form-control" asp-for="DateAndTime" type="datetime-local" />
+        <span class="text-danger" asp-validation-for="DateAndTime"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description">Opis</label>
+        <input class="form-control" asp-for="Description" />
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Camera">Aparat*</label>
+        <input class="form-control" asp-for="Camera" />
+        <span class="text-danger" asp-validation-for="Camera"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Author">Autor*</label>
+        <input class="form-control" asp-for="Author" />
+        <span class="text-danger" asp-validation-for="Author"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Resolution">Rozdzielczość</label>
+        <input class="form-control" asp-for="Resolution" />
+        <span class="text-danger" asp-validation-for="Resolution"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Format">Format*</label>
+        <input class="form-control" asp-for="Format" />
+        <span class="text-danger" asp-validation-for="Format"></span>
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Utwórz</button>
+    </div>
+
+    <p>Pole oznaczone * jest wymagane.</p>
+
+</form>
