@@ -6,6 +6,7 @@
         private int id = 1;
         public void Add(Contact contact)
         {
+            contact.Created = _timeProvider.GetCurrentData();
             contact.Id = id++;
             _contacts.Add(contact.Id, contact);
         }
@@ -28,6 +29,13 @@
         public void Update(Contact item)
         {
             _contacts[item.Id] = item;
+        }
+
+        private IDateTimeProvider _timeProvider;
+
+        public MemoryContactService(IDateTimeProvider timeProvider)
+        {
+            _timeProvider = timeProvider;
         }
     }
 }
