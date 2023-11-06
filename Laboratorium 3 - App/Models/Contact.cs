@@ -48,7 +48,6 @@ namespace Laboratorium_3___App.Models
 
         [Display(Name = "Data urodzenia")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Birth { get; set;  }
         
         [HiddenInput]

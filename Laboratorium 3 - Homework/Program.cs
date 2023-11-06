@@ -1,3 +1,5 @@
+using Laboratorium_3___Homework.Models;
+
 namespace Laboratorium_3___Homework
 {
     public class Program
@@ -8,7 +10,7 @@ namespace Laboratorium_3___Homework
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddSingleton<IPhotoService, MemoryPhotoService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -5,11 +5,15 @@ namespace Laboratorium_3___Homework.Controllers
 {
     public class PhotoController : Controller
     {
-        static Dictionary<int, Photo> _photos = new Dictionary<int, Photo>();
-        static int id = 1;
+        private readonly IPhotoService _photoService;
+
+        public PhotoController(IPhotoService photoService)
+        {
+            _photoService = photoService;
+        }
         public IActionResult Index()
         {
-            return View(_photos);
+            return View(_photoService.FindAll());
         }
 
         [HttpGet]
@@ -23,9 +27,7 @@ namespace Laboratorium_3___Homework.Controllers
         {
             if (ModelState.IsValid)
             {
-                //dodaj model do bazy lub kolekcji
-                model.Id = id++;
-                _photos.Add(model.Id, model);
+                _photoService.Add(model);
                 return RedirectToAction("Index");
 
             }
@@ -35,13 +37,13 @@ namespace Laboratorium_3___Homework.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            return View(_photos[id]);
+            return View(_photoService.FindById(id));
         }
 
         [HttpPost]
         public IActionResult Delete(Photo model)
         {
-            _photos.Remove(model.Id);
+            _photoService.RemoveById(model.Id);
 
             return RedirectToAction("Index");
         }
@@ -49,7 +51,7 @@ namespace Laboratorium_3___Homework.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            return View(_photos[id]);
+            return View(_photoService.FindById(id));
         }
 
         [HttpPost]
@@ -57,7 +59,7 @@ namespace Laboratorium_3___Homework.Controllers
         {
             if (ModelState.IsValid)
             {
-                _photos[model.Id] = model;
+                _photoService.Update(model);
                 return RedirectToAction("Index");
             }
             return View();
@@ -66,7 +68,7 @@ namespace Laboratorium_3___Homework.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return View(_photos[id]);
+            return View(_photoService.FindById(id));
         }
 
         [HttpPost]

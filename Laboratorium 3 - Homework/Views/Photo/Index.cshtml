@@ -1,4 +1,4 @@
-﻿@model Dictionary<int, Photo>
+﻿@model List<Photo>
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,17 +15,17 @@
         <thead>
             <tr>
                 <th>
-                    Data i czas
+                    @Html.DisplayNameFor(model => model[0].DateAndTime)
                 </th>
                 <th>
-                    Aparat
+                    @Html.DisplayNameFor(model => model[0].Camera)
                 </th>
                 <th>
-                    Autor
+                    @Html.DisplayNameFor(model => model[0].Author)
                 </th>
                 <th>
-                    Format
-                </th>
+                    @Html.DisplayNameFor(model => model[0].Format)
+                </th> 
                 <th>
                     Akcje
                 </th>
@@ -37,22 +37,22 @@
                 <tr>
                     <td>
 
-                        @item.Value.DateAndTime
+                        @item.DateAndTime
                     </td>
 
                     <td>
-                        @item.Value.Camera
+                        @item.Camera
                     </td>
                     <td>
-                        @item.Value.Author
+                        @item.Author
                     </td>
                     <td>
-                        @item.Value.Format
+                        @item.Format.GetDisplayName()
                     </td>
                     <td>
-                        <a class="btn btn-outline-info" asp-action="Details" asp-route-id=@item.Key>Szczegóły</a>
-                        <a class="btn btn-outline-success" asp-action="Update" asp-route-id=@item.Key>Edycja</a>
-                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id=@item.Key>Usuń</a>
+                        <a class="btn btn-outline-info" asp-action="Details" asp-route-id=@item.Id>Szczegóły</a>
+                        <a class="btn btn-outline-success" asp-action="Update" asp-route-id=@item.Id>Edycja</a>
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id=@item.Id>Usuń</a>
                     </td>
                 </tr>
             }

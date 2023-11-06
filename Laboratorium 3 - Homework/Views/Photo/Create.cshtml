@@ -11,45 +11,43 @@
 <form asp-controller="Photo" asp-action="Create" method="post">
 
     <div class="mb-3">
-        <label asp-for="DateAndTime">Data i czas*</label>
+        <label asp-for="DateAndTime"></label>
         <input class="form-control" asp-for="DateAndTime" type="datetime-local" />
         <span class="text-danger" asp-validation-for="DateAndTime"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Description">Opis</label>
+        <label asp-for="Description"></label>
         <input class="form-control" asp-for="Description" />
         <span class="text-danger" asp-validation-for="Description"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Camera">Aparat*</label>
+        <label asp-for="Camera"></label>
         <input class="form-control" asp-for="Camera" />
         <span class="text-danger" asp-validation-for="Camera"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Author">Autor*</label>
+        <label asp-for="Author"></label>
         <input class="form-control" asp-for="Author" />
         <span class="text-danger" asp-validation-for="Author"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Resolution">Rozdzielczość</label>
-        <input class="form-control" asp-for="Resolution" />
+        <label asp-for="Resolution"></label>
+        <select asp-for="Resolution" class="form-control" asp-items="@Html.GetEnumSelectList<Resolution>()"></select>
         <span class="text-danger" asp-validation-for="Resolution"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Format">Format*</label>
-        <input class="form-control" asp-for="Format" />
+        <label asp-for="Format"></label>
+        <select asp-for="Format" class="form-control" asp-items="@Html.GetEnumSelectList<Format>()"></select>
         <span class="text-danger" asp-validation-for="Format"></span>
     </div>
 
     <div class="mb-3">
         <button class="btn btn-primary" type="submit">Utwórz</button>
     </div>
-
-    <p>Pole oznaczone * jest wymagane.</p>
 
 </form>
