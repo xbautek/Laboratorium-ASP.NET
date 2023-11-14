@@ -65,7 +65,7 @@ namespace Laboratorium_3___Homework.Models
 
         [StringLength(70, ErrorMessage = "Opis jest za długi")]
         [Display(Name = "Opis")]
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
         [Required(ErrorMessage = "Musi być podana kamera!")]
         [Display(Name = "Aparat")]

@@ -32,7 +32,6 @@ namespace Data
                 new ContactEntity() { Id = 1, Name = "Adam", Email = "baartek@o2.pl", Phone = "123123123" },
                 new ContactEntity() { Id = 2, Name = "Michal", Email = "michal@o2.pl", Phone = "325476666" },
                 new ContactEntity() { Id = 3, Name = "Jakub", Email = "kubuniu@o2.pl", Phone = "897895473" });
-
         }
     }
 }

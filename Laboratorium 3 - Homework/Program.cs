@@ -1,4 +1,5 @@
 using Laboratorium_3___Homework.Models;
+using ProjectData;
 
 namespace Laboratorium_3___Homework
 {
@@ -10,7 +11,8 @@ namespace Laboratorium_3___Homework
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<IPhotoService, MemoryPhotoService>();
+            builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddTransient<IPhotoService, MemoryPhotoService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
