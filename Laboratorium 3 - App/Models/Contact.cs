@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
@@ -52,6 +54,9 @@ namespace Laboratorium_3___App.Models
         
         [HiddenInput]
         public DateTime Created { get; set; }
+        public int? OrganizationId { get; set; }
+        [ValidateNever]
+        public List<SelectListItem> OrganizationsList { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data.Entities;
 using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Laboratorium_3___App.Models
@@ -22,6 +23,11 @@ namespace Laboratorium_3___App.Models
         public List<Contact> FindAll()
         {
             return _context.Contacts.Select(e => ContactMapper.FromEntity(e)).ToList();
+        }
+
+        public List<OrganizationEntity> FindAllOrganizationsForVieModel()
+        {
+            return _context.Organizations.ToList();
         }
 
         public Contact? FindById(int id)

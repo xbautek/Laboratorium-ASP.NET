@@ -40,6 +40,8 @@
         <span class="text-danger" asp-validation-for="Birth"></span>
     </div>
 
+    <select asp-for="OrganizationId" asp-items="@Model.OrganizationsList"></select>
+
     <div class="mb-3">
         <button class="btn btn-primary" type="submit">Utwórz</button>
     </div>

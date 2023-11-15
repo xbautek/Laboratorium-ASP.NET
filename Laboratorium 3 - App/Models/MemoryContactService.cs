@@ -1,4 +1,7 @@
-﻿namespace Laboratorium_3___App.Models
+﻿using Data.Entities;
+using Microsoft.EntityFrameworkCore;
+
+namespace Laboratorium_3___App.Models
 {
     public class MemoryContactService : IContactService
     {
@@ -29,6 +32,11 @@
         public void Update(Contact item)
         {
             _contacts[item.Id] = item;
+        }
+
+        public List<OrganizationEntity> FindAllOrganizationsForVieModel()
+        {
+            throw new NotImplementedException();    
         }
 
         private IDateTimeProvider _timeProvider;
