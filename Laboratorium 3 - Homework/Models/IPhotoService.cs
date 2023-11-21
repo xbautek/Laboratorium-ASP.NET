@@ -1,4 +1,6 @@
-﻿namespace Laboratorium_3___Homework.Models
+﻿using ProjectData.Entities;
+
+namespace Laboratorium_3___Homework.Models
 {
     public interface IPhotoService
     {
@@ -7,5 +9,6 @@
         void Update(Photo photo);
         List<Photo> FindAll();
         Photo? FindById(int id);
+        List<AuthorEntity> FindAllAuthorsForViewModel();
     }
 }

@@ -16,6 +16,9 @@
         <span class="text-danger" asp-validation-for="DateAndTime"></span>
     </div>
 
+    <select asp-for="AuthorId" asp-items="@Model.AuthorsList"></select>
+
+
     <div class="mb-3">
         <label asp-for="Description"></label>
         <input class="form-control" asp-for="Description" />
@@ -26,12 +29,6 @@
         <label asp-for="Camera"></label>
         <input class="form-control" asp-for="Camera" />
         <span class="text-danger" asp-validation-for="Camera"></span>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="Author"></label>
-        <input class="form-control" asp-for="Author" />
-        <span class="text-danger" asp-validation-for="Author"></span>
     </div>
 
     <div class="mb-3">

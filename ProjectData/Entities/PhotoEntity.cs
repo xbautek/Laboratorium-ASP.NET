@@ -21,12 +21,12 @@ namespace ProjectData.Entities
         [StringLength(40)]
         public string Camera { get; set; }
         [Required]
-        [StringLength(50)]
-        public string Author { get; set; }
-        [Required]
         public string Resolution { get; set; }
         [Required]
         public string Format { get; set; }
         public DateTime DateAndTime { get; set; }
+
+        public AuthorEntity? Author { get; set; }
+        public int? AuthorId { get; set; }
     }
 }

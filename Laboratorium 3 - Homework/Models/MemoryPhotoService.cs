@@ -1,6 +1,7 @@
 ﻿using Laboratorium_3___Homework.Mappers;
 using ProjectData;
 using ProjectData.Entities;
+using SQLitePCL;
 
 namespace Laboratorium_3___Homework.Models
 {
@@ -22,6 +23,11 @@ namespace Laboratorium_3___Homework.Models
         public List<Photo> FindAll()
         {
             return _context.Photos.Select(e => PhotoMapper.FromEntity(e)).ToList();
+        }
+
+        public List<AuthorEntity> FindAllAuthorsForViewModel()
+        {
+            return _context.Authors.ToList();
         }
 
         public Photo? FindById(int id)

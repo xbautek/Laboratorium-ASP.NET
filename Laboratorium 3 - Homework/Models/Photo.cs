@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
@@ -71,15 +73,14 @@ namespace Laboratorium_3___Homework.Models
         [Display(Name = "Aparat")]
         public string Camera { get; set; }
 
-        [Required(ErrorMessage = "Musi być podany autor!")]
-        [StringLength(80, ErrorMessage = "Nazwa autora jest za długa")]
-        [Display(Name = "Autor")]
-        public string Author { get; set; }
-
         [Display(Name = "Rozdzielczość")]
         public Resolution Resolution { get; set; }
 
         [Required(ErrorMessage = "Musi być podany format!")]
         public Format Format { get; set; }
+
+        public int? AuthorId { get; set; }
+        [ValidateNever]
+        public List<SelectListItem> AuthorsList { get; set; }
     }
 }

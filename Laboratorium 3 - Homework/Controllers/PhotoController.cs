@@ -1,5 +1,6 @@
 ﻿using Laboratorium_3___Homework.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Laboratorium_3___Homework.Controllers
 {
@@ -19,7 +20,19 @@ namespace Laboratorium_3___Homework.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            return View(new Photo() { AuthorsList = CreateAuthorList() });
+        }
+
+        private List<SelectListItem> CreateAuthorList()
+        {
+            List<SelectListItem> authors = _photoService.FindAllAuthorsForViewModel()
+                .Select(equals => new SelectListItem()
+                {
+                    Text = equals.Name,
+                    Value = equals.Id.ToString(),
+                }).ToList();
+
+            return authors;
         }
 
         [HttpPost]
@@ -31,6 +44,7 @@ namespace Laboratorium_3___Homework.Controllers
                 return RedirectToAction("Index");
 
             }
+            model.AuthorsList = CreateAuthorList();
             return View();
         }
 

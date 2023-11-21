@@ -29,12 +29,6 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="Author"></label>
-        <input class="form-control" asp-for="Author" />
-        <span class="text-danger" asp-validation-for="Author"></span>
-    </div>
-
-    <div class="mb-3">
         <label asp-for="Resolution"></label>
         <select asp-for="Resolution" class="form-control" asp-items="@Html.GetEnumSelectList<Resolution>()"></select>
         <span class="text-danger" asp-validation-for="Resolution"></span>

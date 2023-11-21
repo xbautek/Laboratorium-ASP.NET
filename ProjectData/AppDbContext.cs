@@ -11,6 +11,8 @@ namespace ProjectData
     public class AppDbContext : DbContext
     {
         public DbSet<PhotoEntity> Photos { get; set; }
+        public DbSet<AuthorEntity> Authors { get; set; }
+
         private string DbPath { get; set; }
 
         public AppDbContext()
@@ -27,9 +29,50 @@ namespace ProjectData
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PhotoEntity>()
+                .HasOne(e => e.Author)
+                .WithMany(o => o.Photos)
+                .HasForeignKey(k => k.AuthorId);
+
+            modelBuilder.Entity<AuthorEntity>()
+               .HasData(
+                   new AuthorEntity()
+                   {
+                       Id = 101,
+                       Name = "Max",
+                       Surname = "Cuttler",
+                       Email = "maxcut@gmail.com"
+                   },
+                   new AuthorEntity()
+                   {
+                       Id = 102,
+                       Name = "Daniel",
+                       Surname = "Tarka",
+                       Email = "danieltarka1994@o2.com"
+                   }
+               );
+
             modelBuilder.Entity<PhotoEntity>().HasData(
-                new PhotoEntity() { Id = 1, Author = "Max Pietrucha", Camera = "Nikon", DateAndTime= new DateTime(2022,12,22), Description = "My best photo from the Kryspinów lake", Format = "_16x9", Resolution = "_2560x1440" },
-                new PhotoEntity() { Id = 2, Author = "Alex Sulek", Camera = "Sony", DateAndTime = new DateTime(2023, 10, 31), Description = "Halloween party photo", Format = "_21x9", Resolution = "_3840x2160" }
+                new PhotoEntity()
+                {
+                    Id = 1,
+                    AuthorId = 101,
+                    Camera = "Nikon",
+                    DateAndTime = new DateTime(2022, 12, 22),
+                    Description = "My best photo from the Kryspinów lake",
+                    Format = "_16x9",
+                    Resolution = "_2560x1440"
+                },
+                new PhotoEntity()
+                {
+                    Id = 2,
+                    AuthorId = 102,
+                    Camera = "Sony",
+                    DateAndTime = new DateTime(2023, 10, 31),
+                    Description = "Halloween party photo",
+                    Format = "_21x9",
+                    Resolution = "_3840x2160"
+                }
                 );
         }
     }

@@ -10,12 +10,12 @@ namespace Laboratorium_3___Homework.Mappers
             return new Photo()
             {
                 Id = entity.Id,
-                Author = entity.Author,
                 DateAndTime= entity.DateAndTime,
                 Description = entity.Description,
                 Camera= entity.Camera,
                 Format = (Format)Enum.Parse( typeof(Format),entity.Format),
-                Resolution = (Resolution)Enum.Parse( typeof(Resolution),entity.Resolution)
+                Resolution = (Resolution)Enum.Parse( typeof(Resolution),entity.Resolution),
+                AuthorId = entity.AuthorId
             };
         }
 
@@ -24,12 +24,13 @@ namespace Laboratorium_3___Homework.Mappers
             return new PhotoEntity()
             {
                 Id = photo.Id,
-                Author = photo.Author,
                 DateAndTime = photo.DateAndTime,
                 Description = photo.Description,
                 Camera = photo.Camera,
                 Format = photo.Format.ToString(),
-                Resolution = photo.Resolution.ToString()
+                Resolution = photo.Resolution.ToString(),
+                AuthorId = photo.AuthorId
+             
             };
         }
         

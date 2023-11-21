@@ -7,7 +7,7 @@
 namespace Data.Migrations
 {
     /// <inheritdoc />
-    public partial class organization1 : Migration
+    public partial class contactinit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,7 @@ namespace Data.Migrations
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Organizations",
+                name: "organizations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -32,16 +32,7 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Organizations", x => x.Id);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Organizations",
-                columns: new[] { "Id", "Description", "Name", "Address_City", "Address_PostalCode", "Address_Street" },
-                values: new object[,]
-                {
-                    { 101, "Uczelnia wyższa", "WSEI", "Kraków", "31-150", "św. Filipa 17" },
-                    { 102, "Robia se spacecrafta", "Koło studenckie spacecraft", "Kraków", "31-150", "św. Filipa 17" }
+                    table.PrimaryKey("PK_organizations", x => x.Id);
                 });
 
             migrationBuilder.UpdateData(
@@ -65,16 +56,25 @@ namespace Data.Migrations
                 column: "OrganizationId",
                 value: 101);
 
+            migrationBuilder.InsertData(
+                table: "organizations",
+                columns: new[] { "Id", "Description", "Name", "Address_City", "Address_PostalCode", "Address_Street" },
+                values: new object[,]
+                {
+                    { 101, "Uczelnia wyższa", "WSEI", "Kraków", "31-150", "św. Filipa 17" },
+                    { 102, "Robia se spacecrafta", "Koło studenckie spacecraft", "Kraków", "31-150", "św. Filipa 17" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_contacts_OrganizationId",
                 table: "contacts",
                 column: "OrganizationId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_contacts_Organizations_OrganizationId",
+                name: "FK_contacts_organizations_OrganizationId",
                 table: "contacts",
                 column: "OrganizationId",
-                principalTable: "Organizations",
+                principalTable: "organizations",
                 principalColumn: "Id");
         }
 
@@ -82,11 +82,11 @@ namespace Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_contacts_Organizations_OrganizationId",
+                name: "FK_contacts_organizations_OrganizationId",
                 table: "contacts");
 
             migrationBuilder.DropTable(
-                name: "Organizations");
+                name: "organizations");
 
             migrationBuilder.DropIndex(
                 name: "IX_contacts_OrganizationId",

@@ -17,6 +17,45 @@ namespace ProjectData.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.14");
 
+            modelBuilder.Entity("ProjectData.Entities.AuthorEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 101,
+                            Email = "maxcut@gmail.com",
+                            Name = "Max",
+                            Surname = "Cuttler"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            Email = "danieltarka1994@o2.com",
+                            Name = "Daniel",
+                            Surname = "Tarka"
+                        });
+                });
+
             modelBuilder.Entity("ProjectData.Entities.PhotoEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -24,10 +63,8 @@ namespace ProjectData.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("photo_id");
 
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("AuthorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Camera")
                         .IsRequired()
@@ -52,13 +89,15 @@ namespace ProjectData.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AuthorId");
+
                     b.ToTable("photos");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Author = "Max Pietrucha",
+                            AuthorId = 101,
                             Camera = "Nikon",
                             DateAndTime = new DateTime(2022, 12, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "My best photo from the Kryspinów lake",
@@ -68,13 +107,27 @@ namespace ProjectData.Migrations
                         new
                         {
                             Id = 2,
-                            Author = "Alex Sulek",
+                            AuthorId = 102,
                             Camera = "Sony",
                             DateAndTime = new DateTime(2023, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Halloween party photo",
                             Format = "_21x9",
                             Resolution = "_3840x2160"
                         });
+                });
+
+            modelBuilder.Entity("ProjectData.Entities.PhotoEntity", b =>
+                {
+                    b.HasOne("ProjectData.Entities.AuthorEntity", "Author")
+                        .WithMany("Photos")
+                        .HasForeignKey("AuthorId");
+
+                    b.Navigation("Author");
+                });
+
+            modelBuilder.Entity("ProjectData.Entities.AuthorEntity", b =>
+                {
+                    b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618
         }
