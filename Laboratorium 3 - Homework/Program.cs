@@ -1,5 +1,8 @@
 using Laboratorium_3___Homework.Models;
 using ProjectData;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
 
 namespace Laboratorium_3___Homework
 {
@@ -10,8 +13,13 @@ namespace Laboratorium_3___Homework
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddRazorPages();
+            builder.Services.AddSession();
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<AppDbContext>();
+
             builder.Services.AddTransient<IPhotoService, MemoryPhotoService>();
             var app = builder.Build();
 
@@ -28,8 +36,10 @@ namespace Laboratorium_3___Homework
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseSession();
+            app.MapRazorPages();
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

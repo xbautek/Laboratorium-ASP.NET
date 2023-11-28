@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using ProjectData.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProjectData
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<PhotoEntity> Photos { get; set; }
         public DbSet<AuthorEntity> Authors { get; set; }
@@ -29,6 +31,52 @@ namespace ProjectData
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            //tworzenie użytkownika
+            var user = new IdentityUser()
+            {
+                Id = Guid.NewGuid().ToString(),
+                UserName = "test",
+                NormalizedUserName = "TEST",
+                Email = "test@wsei.edu.pl",
+                NormalizedEmail = "TEST@WSEI.EDU.PL",
+                EmailConfirmed = true,
+            };
+
+            PasswordHasher<IdentityUser> passwordHasher = new PasswordHasher<IdentityUser>();
+
+            user.PasswordHash = passwordHasher.HashPassword(user, "1234Ab!");
+
+            modelBuilder.Entity<IdentityUser>()
+                .HasData(user);
+
+            //tworzenie roli
+
+            var adminRole = new IdentityRole()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "admin",
+                NormalizedName = "ADMIN"
+            };
+
+            adminRole.ConcurrencyStamp = adminRole.Id;
+
+            //nadanie użytkownikowi roli
+
+            modelBuilder.Entity<IdentityUserRole<string>>()
+                .HasData(
+                    new IdentityUserRole<string>()
+                    {
+                        RoleId = adminRole.Id,
+                        UserId = user.Id
+                    }
+                );
+
+            modelBuilder.Entity<IdentityRole>()
+                .HasData(adminRole);
+
+
             modelBuilder.Entity<PhotoEntity>()
                 .HasOne(e => e.Author)
                 .WithMany(o => o.Photos)

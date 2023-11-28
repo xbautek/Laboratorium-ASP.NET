@@ -17,10 +17,10 @@ namespace Laboratorium_3___App
             builder.Services.AddSession();
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>();
 
-                        builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>();
             builder.Services.AddTransient<IContactService, EFContactService>();
             builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
             var app = builder.Build();

@@ -1,9 +1,12 @@
 ﻿using Laboratorium_3___Homework.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data;
 
 namespace Laboratorium_3___Homework.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class PhotoController : Controller
     {
         private readonly IPhotoService _photoService;
@@ -12,6 +15,7 @@ namespace Laboratorium_3___Homework.Controllers
         {
             _photoService = photoService;
         }
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_photoService.FindAll());
