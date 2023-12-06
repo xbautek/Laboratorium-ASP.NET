@@ -26,7 +26,7 @@ namespace Laboratorium_3___App.Models
 
         public Contact? FindById(int id)
         {
-            return _contacts[id];
+            return _contacts.ContainsKey(id) ? _contacts[id] : null;
         }
 
         public void Update(Contact item)

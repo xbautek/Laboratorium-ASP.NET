@@ -100,7 +100,14 @@ namespace Laboratorium_3___App.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
+            var find = _contactService.FindById(id);
+            if(find == null)
+            {
+                return NotFound();
+            }
+            
             return View(_contactService.FindById(id));
+            
         }
 
         [HttpPost]
