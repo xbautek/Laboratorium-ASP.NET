@@ -14,13 +14,15 @@ namespace Laboratorium_3___Homework
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddSession();
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>();
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
             builder.Services.AddTransient<IPhotoService, MemoryPhotoService>();
+            builder.Services.AddMemoryCache();                        
+            builder.Services.AddSession();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -35,7 +37,7 @@ namespace Laboratorium_3___Homework
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseMiddleware<LastVisitCookie>();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();

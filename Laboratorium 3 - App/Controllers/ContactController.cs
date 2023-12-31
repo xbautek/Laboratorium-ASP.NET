@@ -30,6 +30,8 @@ namespace Laboratorium_3___App.Controllers
             return View(_contactService.FindPage(page,size));
         }
 
+
+
         [HttpGet]
         public IActionResult Create()
         {

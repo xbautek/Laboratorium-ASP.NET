@@ -18,6 +18,7 @@ namespace Laboratorium_3___Homework.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            
             return View(_photoService.FindAll());
         }
 
@@ -86,6 +87,12 @@ namespace Laboratorium_3___Homework.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
+            var find = _photoService.FindById(id);
+            if (find == null)
+            {
+                return NotFound();
+            }
+
             return View(_photoService.FindById(id));
         }
 
@@ -93,6 +100,34 @@ namespace Laboratorium_3___Homework.Controllers
         public IActionResult Details()
         {
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult CreateApi()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult CreateApi(Photo photo)
+        {
+            if (ModelState.IsValid)
+            {
+                _photoService.Add(photo);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult PagedIndex(int page = 1, int size = 5)
+        {
+            if (size < 2)
+            {
+                return BadRequest();
+            }
+            return View(_photoService.FindPage(page, size));
         }
     }
 }

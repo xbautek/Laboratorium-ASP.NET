@@ -137,8 +137,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2592c3d0-3456-47ee-8a54-d7a21a7daac6",
-                            ConcurrencyStamp = "2592c3d0-3456-47ee-8a54-d7a21a7daac6",
+                            Id = "70029668-6f54-45b5-9eda-3c778d90ef41",
+                            ConcurrencyStamp = "70029668-6f54-45b5-9eda-3c778d90ef41",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -233,17 +233,17 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d9ede9c0-d53b-477d-b34f-24d093bede8e",
+                            Id = "861bd6b9-c8bf-48c0-a1d0-bc749e70dc4c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "112e9479-0e66-4f05-9904-0958f12d8132",
+                            ConcurrencyStamp = "b1a92f43-0fef-4fc2-a37b-f73f5e2f61ca",
                             Email = "test@wsei.edu.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@WSEI.EDU.PL",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAELGNmD80is3uFY2senNCIH4hym7DGVnnOwXACj0Zz/fI7LGykJSk5s1erE5Jjmzzrw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIq7IdYftUQCWYBrtT6sIRdFPBTIgR1UmMSjuMbU4/Rky/bSaGJDZKwNyXR+4aLYuw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fb5cd16d-57a1-4209-a9fc-23e51ad28cc9",
+                            SecurityStamp = "cea4363f-767f-4aae-8374-17d7b28421b6",
                             TwoFactorEnabled = false,
                             UserName = "test"
                         });
@@ -311,8 +311,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "d9ede9c0-d53b-477d-b34f-24d093bede8e",
-                            RoleId = "2592c3d0-3456-47ee-8a54-d7a21a7daac6"
+                            UserId = "861bd6b9-c8bf-48c0-a1d0-bc749e70dc4c",
+                            RoleId = "70029668-6f54-45b5-9eda-3c778d90ef41"
                         });
                 });
 

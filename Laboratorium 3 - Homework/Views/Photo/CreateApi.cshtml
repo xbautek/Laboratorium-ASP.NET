@@ -1,0 +1,77 @@
+﻿@model Photo
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Dodaj nowe zdjęcie</h1>
+
+<form asp-controller="Photo" asp-action="CreateApi" method="post">
+
+    <div class="mb-3">
+        <label asp-for="DateAndTime"></label>
+        <input class="form-control" asp-for="DateAndTime" type="datetime-local" />
+        <span class="text-danger" asp-validation-for="DateAndTime"></span>
+    </div>
+
+@*    <select asp-for="AuthorId" asp-items="@Model.AuthorsList"></select>
+*@
+    <div class="form-group">
+        <label for="filter">Filtr Autora</label>
+        <input class="form-control mb-3" type="text" name="filter" id="filter" />
+        <label asp-for="AuthorId"></label>
+        <select class="form-control mb-3" asp-for="AuthorId"></select>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" />
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Camera"></label>
+        <input class="form-control" asp-for="Camera" />
+        <span class="text-danger" asp-validation-for="Camera"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Resolution"></label>
+        <select asp-for="Resolution" class="form-control" asp-items="@Html.GetEnumSelectList<Resolution>()"></select>
+        <span class="text-danger" asp-validation-for="Resolution"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Format"></label>
+        <select asp-for="Format" class="form-control" asp-items="@Html.GetEnumSelectList<Format>()"></select>
+        <span class="text-danger" asp-validation-for="Format"></span>
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Utwórz</button>
+    </div>
+
+</form>
+
+@section Scripts{
+    <script>
+        const select = document.getElementById('AuthorId');
+        const filter = document.getElementById('filter');
+        filter.onchange = function () {
+            select.innerHTML = "";
+            fetch(`/api/authors?q=${filter.value}`)
+                .then(response => response.json())
+                .then(authors => {
+                    for (let aut of authors) {
+                        const option = document.createElement('option');
+                        option.setAttribute('value', aut.id);
+                        option.innerText = aut.name;
+                        select.appendChild(option);
+                    }
+                });
+        }
+    </script>
+}
