@@ -60,20 +60,43 @@ namespace Laboratorium_3___Homework.Models
 
 
 
-        public PagingList<Photo> FindPage(int page, int size)
+        public PagingList<Photo> FindPage(int page, int size, int? authorId)
         {
-            return PagingList<Photo>.Create(
+            var allPhotos = FindAll(); // Twoja implementacja pobierania wszystkich zdjęć
+
+            Console.WriteLine($"Input AuthorId: {authorId}");
+
+            if (authorId.HasValue)
+            {
+                Console.WriteLine("AuthorId has value");
+                allPhotos = allPhotos.Where(photo => photo.AuthorId == authorId).ToList();
+            }
+            else
+            {
+                Console.WriteLine("AuthorId is null");
+            }
+
+            var totalCount = allPhotos.Count();
+
+            Console.WriteLine($"Total Count: {totalCount}");
+
+            var result = PagingList<Photo>.Create(
                 (p, s) =>
-                    _context.Photos
+                    allPhotos
                     .OrderBy(c => c.Id)
                     .Skip((p - 1) * size)
                     .Take(s)
-                    .Select(PhotoMapper.FromEntity)
                     .ToList(),
                 page,
                 size,
-                _context.Photos.Count()
-                );
+                totalCount
+            );
+
+            return result;
         }
+
+
+
+
     }
 }

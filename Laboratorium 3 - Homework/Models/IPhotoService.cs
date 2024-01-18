@@ -10,6 +10,6 @@ namespace Laboratorium_3___Homework.Models
         List<Photo> FindAll();
         Photo? FindById(int id);
         List<AuthorEntity> FindAllAuthorsForViewModel();
-        PagingList<Photo> FindPage(int page, int size);
+        PagingList<Photo> FindPage(int page, int size, int? authorId = null);
     }
 }

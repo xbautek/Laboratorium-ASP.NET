@@ -2,7 +2,7 @@
 {
     public class PagingList<T>
     {
-        public IEnumerable<T> Data { get; }
+        public IEnumerable<T> Data { get; set; }
         public int Page { get; }
         public int Size { get; }
         public int TotalPages { get; }

@@ -40,13 +40,15 @@ namespace Laboratorium_3___Homework.Controllers
             return authors;
         }
 
+
+
         [HttpPost]
         public IActionResult Create(Photo model)
         {
             if (ModelState.IsValid)
             {
                 _photoService.Add(model);
-                return RedirectToAction("Index");
+                return RedirectToAction("PagedIndex");
 
             }
             model.AuthorsList = CreateAuthorList();
@@ -64,7 +66,7 @@ namespace Laboratorium_3___Homework.Controllers
         {
             _photoService.RemoveById(model.Id);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("PagedIndex");
         }
 
         [HttpGet]
@@ -79,7 +81,7 @@ namespace Laboratorium_3___Homework.Controllers
             if (ModelState.IsValid)
             {
                 _photoService.Update(model);
-                return RedirectToAction("Index");
+                return RedirectToAction("PagedIndex");
             }
             return View();
         }
@@ -99,7 +101,7 @@ namespace Laboratorium_3___Homework.Controllers
         [HttpPost]
         public IActionResult Details()
         {
-            return RedirectToAction("Index");
+            return RedirectToAction("PagedIndex");
         }
 
         [HttpGet]
@@ -115,19 +117,32 @@ namespace Laboratorium_3___Homework.Controllers
             if (ModelState.IsValid)
             {
                 _photoService.Add(photo);
-                return RedirectToAction("Index");
+                return RedirectToAction("PagedIndex");
             }
             return View();
         }
 
         [AllowAnonymous]
-        public IActionResult PagedIndex(int page = 1, int size = 5)
+        public IActionResult PagedIndex(int? authorId, int page = 1, int size = 5)
         {
             if (size < 2)
             {
                 return BadRequest();
             }
-            return View(_photoService.FindPage(page, size));
+
+            ViewBag.AuthorsList = CreateAuthorList();
+
+            var x = _photoService.FindPage(page, size, authorId);
+
+            foreach (var photo in x.Data)
+            {
+                photo.AuthorsList = CreateAuthorList();
+            }
+
+            ViewBag.AuthorId = authorId; // Dodaj tę linię
+
+            return View(x);
         }
+
     }
 }

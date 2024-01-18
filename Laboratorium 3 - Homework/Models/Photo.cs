@@ -78,7 +78,7 @@ namespace Laboratorium_3___Homework.Models
 
         [Required(ErrorMessage = "Musi być podany format!")]
         public Format Format { get; set; }
-
+        [Display(Name = "Autor")]
         public int? AuthorId { get; set; }
         [ValidateNever]
         public List<SelectListItem> AuthorsList { get; set; }

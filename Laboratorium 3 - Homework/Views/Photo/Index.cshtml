@@ -24,7 +24,8 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model[0].Format)
-                </th> 
+                </th>
+
                 <th>
                     Akcje
                 </th>
@@ -45,6 +46,7 @@
                     <td>
                         @item.Format.GetDisplayName()
                     </td>
+                    
                     <td>
                         <a class="btn btn-outline-info" asp-action="Details" asp-route-id=@item.Id>Szczegóły</a>
                         <a class="btn btn-outline-success" asp-action="Update" asp-route-id=@item.Id>Edycja</a>
