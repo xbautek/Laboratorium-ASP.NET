@@ -3,7 +3,45 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Usuń Zdjęcie";
 }
+
+<style>
+    /* Dodaj ten fragment do pliku Delete.cshtml */
+
+    body {
+        font-family: Tahoma;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 5px;
+        font-size: 18px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    .btn-danger {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+        border-radius: 5px;
+        padding: 8px 15px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+            text-decoration: none;
+        }
+</style>
 
 <h1>Czy na pewno chcesz usunąć Zdjęcie?</h1>
 <p>Data i czas</p>

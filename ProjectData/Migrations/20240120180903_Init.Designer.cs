@@ -11,8 +11,8 @@ using ProjectData;
 namespace ProjectData.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231128194248_identity")]
-    partial class identity
+    [Migration("20240120180903_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,8 +48,8 @@ namespace ProjectData.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2a2c8b96-78b0-49f5-a94e-6cb6f083b3d3",
-                            ConcurrencyStamp = "2a2c8b96-78b0-49f5-a94e-6cb6f083b3d3",
+                            Id = "a3b284f6-7b20-4154-a906-bf1baa907c09",
+                            ConcurrencyStamp = "a3b284f6-7b20-4154-a906-bf1baa907c09",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -144,17 +144,17 @@ namespace ProjectData.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1f7997f5-4283-431b-9843-15d1d031090e",
+                            Id = "f1979f16-a3f2-4e6b-a3a5-97fdf0c76c59",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "759d78d2-34e8-466c-93e2-47fb35d827ce",
+                            ConcurrencyStamp = "9d7ba146-ed02-4ecc-b911-529312d37490",
                             Email = "test@wsei.edu.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TEST@WSEI.EDU.PL",
                             NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKFU2+hjEcr9BN8HywGruDjhZcACZL8uw3NdR65+9oqQNAFfJRCyr0kvCXyq316emg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIyvL8zHqmP0ShscGXN4+pRrrI+V539C+/oah6Lm7F/l4tIdx0X7NvP7Es10/RCviw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7448afd2-95c7-4909-a46a-37d299e4e76a",
+                            SecurityStamp = "ea3f4b3b-8c70-47ca-b61f-3a1633e5ac69",
                             TwoFactorEnabled = false,
                             UserName = "test"
                         });
@@ -222,8 +222,8 @@ namespace ProjectData.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "1f7997f5-4283-431b-9843-15d1d031090e",
-                            RoleId = "2a2c8b96-78b0-49f5-a94e-6cb6f083b3d3"
+                            UserId = "f1979f16-a3f2-4e6b-a3a5-97fdf0c76c59",
+                            RoleId = "a3b284f6-7b20-4154-a906-bf1baa907c09"
                         });
                 });
 

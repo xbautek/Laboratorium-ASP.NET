@@ -1,10 +1,58 @@
 ﻿@model Photo
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+<style>
+    /* Dodaj ten fragment do pliku CSS */
+
+    .btn-primary {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #31b0d5;
+            border-color: #269abc;
+            color: #fff;
+        }
+
+    /* Dodaj styl dla formularza */
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Dodaj styl dla filtra autora */
+    #filter {
+        width: 100%;
+    }
+
+    /* Wyśrodkuj nagłówek */
+    h1 {
+        text-align: center;
+    }
+
+    body {
+        font-family: Tahoma;
+    }
+
+    /* Wyśrodkuj etykiety i pola formularza */
+    label {
+        display: block;
+        text-align: center;
+        margin-bottom: 5px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Zmień na preferowaną czcionkę */
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    /* Wyśrodkuj przycisk */
+    .btn {
+        margin: auto;
+        display: block;
+    }
+</style>
 
 <h1>Dodaj nowe zdjęcie</h1>
 
@@ -16,15 +64,12 @@
         <span class="text-danger" asp-validation-for="DateAndTime"></span>
     </div>
 
-@*    <select asp-for="AuthorId" asp-items="@Model.AuthorsList"></select>
-*@
     <div class="form-group">
         <label for="filter">Filtr Autora</label>
         <input class="form-control mb-3" type="text" name="filter" id="filter" />
         <label asp-for="AuthorId"></label>
         <select class="form-control mb-3" asp-for="AuthorId"></select>
     </div>
-
 
     <div class="mb-3">
         <label asp-for="Description"></label>
@@ -40,13 +85,13 @@
 
     <div class="mb-3">
         <label asp-for="Resolution"></label>
-        <select asp-for="Resolution" class="form-control" asp-items="@Html.GetEnumSelectList<Resolution>()"></select>
+        <select class="form-control" asp-for="Resolution" asp-items="@Html.GetEnumSelectList<Resolution>()"></select>
         <span class="text-danger" asp-validation-for="Resolution"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="Format"></label>
-        <select asp-for="Format" class="form-control" asp-items="@Html.GetEnumSelectList<Format>()"></select>
+        <select class="form-control" asp-for="Format" asp-items="@Html.GetEnumSelectList<Format>()"></select>
         <span class="text-danger" asp-validation-for="Format"></span>
     </div>
 
@@ -60,7 +105,7 @@
     <script>
         const select = document.getElementById('AuthorId');
         const filter = document.getElementById('filter');
-        filter.onchange = function () {
+        filter.oninput = function () {
             select.innerHTML = "";
             fetch(`/api/authors?q=${filter.value}`)
                 .then(response => response.json())

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Laboratorium_3___Homework.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -55,17 +56,40 @@ namespace Laboratorium_3___Homework.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname,Email")] AuthorEntity authorEntity)
+        public IActionResult Create(AuthorEntity authorEntity)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Add(authorEntity);
+                    _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Zaloguj informacje o błędzie.
+                Console.WriteLine(ex.Message);
+            }
+
+            return View(authorEntity);
+        }
+
+        /*
+        [HttpPost]
+        public IActionResult Create(Photo model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(authorEntity);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                _photoService.Add(model);
+                return RedirectToAction("PagedIndex");
+
             }
-            return View(authorEntity);
+            model.AuthorsList = CreateAuthorList();
+            return View();
         }
+        */
 
         // GET: Author/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -121,27 +145,39 @@ namespace Laboratorium_3___Homework.Controllers
         // GET: Author/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Authors == null)
-            {
-                return NotFound();
-            }
+            
+                if (id == null || _context.Authors == null)
+                {
+                    return NotFound();
+                }
 
-            var authorEntity = await _context.Authors
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (authorEntity == null)
-            {
-                return NotFound();
-            }
+                var authorEntity = await _context.Authors
+                    .FirstOrDefaultAsync(m => m.Id == id);
 
-            return View(authorEntity);
+                if (authorEntity == null)
+                {
+                    return NotFound();
+                }
+
+                return View(authorEntity);
+            
+            
         }
+
+        public IActionResult DeleteError()
+        {
+            return View();
+        }
+
 
         // POST: Author/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Authors == null)
+            try
+            {
+                if (_context.Authors == null)
             {
                 return Problem("Entity set 'AppDbContext.Authors'  is null.");
             }
@@ -153,6 +189,14 @@ namespace Laboratorium_3___Homework.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+
+            }
+            catch (Exception ex)
+            {
+                // Tutaj możesz dodać logowanie błędu, jeśli to konieczne
+
+                return RedirectToAction("DeleteError");
+            }
         }
 
         private bool AuthorEntityExists(int id)

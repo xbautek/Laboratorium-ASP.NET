@@ -1,15 +1,47 @@
 ﻿@model Photo
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
+    ViewData["Title"] = "Aktualizuj zdjęcie";
 }
 
-<h1>Aktualizuj zdjęcie</h1>
+<style>
+    /* Dodaj ten fragment do pliku Update.cshtml */
+
+    body {
+        font-family: Tahoma;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    label {
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .mb-3 {
+        margin-bottom: 15px;
+    }
+
+    .btn-primary {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #31b0d5;
+            border-color: #269abc;
+            color: #fff;
+        }
+</style>
+
+<h1>Zamień dane zdjęcia</h1>
 
 <form asp-controller="Photo" asp-action="Update" method="post">
     <input asp-for="Id" />
+
     <div class="mb-3">
         <label asp-for="DateAndTime"></label>
         <input class="form-control" asp-for="DateAndTime" type="datetime-local" />
@@ -43,6 +75,4 @@
     <div class="mb-3">
         <button class="btn btn-primary" type="submit">Aktualizuj</button>
     </div>
-
-
 </form>

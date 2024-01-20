@@ -4,9 +4,44 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    /* Dodaj ten fragment do pliku Index.cshtml */
 
-<h4>AuthorEntity</h4>
+    body {
+        font-family: Tahoma;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+   
+
+    .btn-primary,
+    .btn-info,
+    .btn-outline-info,
+    .btn-outline-success,
+    .btn-outline-danger {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+        color: #fff;
+    }
+
+        .btn-primary:hover,
+        .btn-info:hover,
+        .btn-outline-info:hover,
+        .btn-outline-success:hover,
+        .btn-outline-danger:hover {
+            background-color: #31b0d5;
+            border-color: #269abc;
+            color: #fff;
+        }
+
+</style>
+
+<h1>Edytuj dane autora</h1>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -29,14 +64,15 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+                <a class="btn btn-primary" asp-action="Index">Wróć do listy</a>
+
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

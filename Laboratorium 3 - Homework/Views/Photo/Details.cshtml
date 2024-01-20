@@ -1,22 +1,55 @@
 ﻿@model Photo
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
+    ViewData["Title"] = "Details";
 }
+
+<style>
+    /* Dodaj ten fragment do pliku Details.cshtml */
+
+    body {
+        font-family: Tahoma;
+    }
+
+    h3 {
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin-top: 0;
+    }
+
+    .btn-primary {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #31b0d5;
+            border-color: #269abc;
+            color: #fff;
+        }
+</style>
 
 <h3>Data i godzina</h3>
 <p>@Model.DateAndTime</p>
+<hr />
+
 <h3>Opis</h3>
 <p>@Model.Description</p>
+<hr />
+
 <h3>Aparat</h3>
 <p>@Model.Camera</p>
+<hr />
+
 <h3>Rozdzielczość</h3>
 <p>@Model.Resolution.GetDisplayName()</p>
+<hr />
+
 <h3>Format</h3>
 <p>@Model.Format.GetDisplayName()</p>
-
-
+<hr />
 
 <form asp-action="Details">
     <button class="btn btn-primary" type="submit">Wróć</button>

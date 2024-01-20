@@ -123,7 +123,7 @@ namespace Laboratorium_3___Homework.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult PagedIndex(int? authorId, int page = 1, int size = 5)
+        public IActionResult PagedIndex(int? authorId, int page = 1, int size = 7)
         {
             if (size < 2)
             {

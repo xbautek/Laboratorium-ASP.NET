@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectData.Migrations
 {
     /// <inheritdoc />
-    public partial class identity : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -199,12 +199,12 @@ namespace ProjectData.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2a2c8b96-78b0-49f5-a94e-6cb6f083b3d3", "2a2c8b96-78b0-49f5-a94e-6cb6f083b3d3", "admin", "ADMIN" });
+                values: new object[] { "a3b284f6-7b20-4154-a906-bf1baa907c09", "a3b284f6-7b20-4154-a906-bf1baa907c09", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1f7997f5-4283-431b-9843-15d1d031090e", 0, "759d78d2-34e8-466c-93e2-47fb35d827ce", "test@wsei.edu.pl", true, false, null, "TEST@WSEI.EDU.PL", "TEST", "AQAAAAEAACcQAAAAEKFU2+hjEcr9BN8HywGruDjhZcACZL8uw3NdR65+9oqQNAFfJRCyr0kvCXyq316emg==", null, false, "7448afd2-95c7-4909-a46a-37d299e4e76a", false, "test" });
+                values: new object[] { "f1979f16-a3f2-4e6b-a3a5-97fdf0c76c59", 0, "9d7ba146-ed02-4ecc-b911-529312d37490", "test@wsei.edu.pl", true, false, null, "TEST@WSEI.EDU.PL", "TEST", "AQAAAAEAACcQAAAAEIyvL8zHqmP0ShscGXN4+pRrrI+V539C+/oah6Lm7F/l4tIdx0X7NvP7Es10/RCviw==", null, false, "ea3f4b3b-8c70-47ca-b61f-3a1633e5ac69", false, "test" });
 
             migrationBuilder.InsertData(
                 table: "authors",
@@ -218,7 +218,7 @@ namespace ProjectData.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "2a2c8b96-78b0-49f5-a94e-6cb6f083b3d3", "1f7997f5-4283-431b-9843-15d1d031090e" });
+                values: new object[] { "a3b284f6-7b20-4154-a906-bf1baa907c09", "f1979f16-a3f2-4e6b-a3a5-97fdf0c76c59" });
 
             migrationBuilder.InsertData(
                 table: "photos",
