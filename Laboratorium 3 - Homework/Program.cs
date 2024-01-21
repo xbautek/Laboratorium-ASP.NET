@@ -20,6 +20,7 @@ namespace Laboratorium_3___Homework
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
+            builder.Services.AddTransient<ICommentService, MemoryCommentService>();
             builder.Services.AddTransient<IPhotoService, MemoryPhotoService>();
             builder.Services.AddMemoryCache();                        
             builder.Services.AddSession();

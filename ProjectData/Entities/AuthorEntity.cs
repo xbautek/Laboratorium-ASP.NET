@@ -13,15 +13,15 @@ namespace ProjectData.Entities
     {
         [Column("author_id")]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Podaj imię!")]
         [StringLength(40)]
         [Display(Name = "Imię")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Podaj nazwisko!")]
         [StringLength(40)]
         [Display(Name = "Nazwisko")]
         public string Surname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Podaj Email!")]
         [StringLength(60)]
         public string Email { get; set; }
         public ICollection<PhotoEntity>? Photos { get; set; }

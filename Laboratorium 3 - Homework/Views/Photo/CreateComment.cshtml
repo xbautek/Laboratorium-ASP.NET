@@ -1,0 +1,53 @@
+﻿@model Comment
+
+@{
+    ViewData["Title"] = "Add Comment";
+}
+
+<style>
+    body {
+        font-family: Tahoma;
+    }
+
+    .btn-primary,
+    .btn-info,
+    .btn-outline-info,
+    .btn-outline-success,
+    .btn-outline-danger {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+        color: #fff;
+    }
+
+        .btn-primary:hover,
+        .btn-info:hover,
+        .btn-outline-info:hover,
+        .btn-outline-success:hover,
+        .btn-outline-danger:hover {
+            background-color: #31b0d5;
+            border-color: #269abc;
+            color: #fff;
+        }
+</style>
+
+<h1>Add Comment</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="Comment" asp-action="Create" method="post">
+            <input type="hidden" asp-for="PhotoId" value=@ViewBag.PhotoId />
+
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class="form-control"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Add Comment" class="btn btn-primary" />
+                <a class="btn btn-primary" asp-controller="Photo" asp-action="PagedIndex">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

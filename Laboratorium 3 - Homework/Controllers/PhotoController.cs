@@ -6,7 +6,6 @@ using System.Data;
 
 namespace Laboratorium_3___Homework.Controllers
 {
-    [Authorize(Roles = "admin")]
     public class PhotoController : Controller
     {
         private readonly IPhotoService _photoService;
@@ -16,18 +15,19 @@ namespace Laboratorium_3___Homework.Controllers
         {
             _photoService = photoService;
         }
-        [AllowAnonymous]
-        public IActionResult Index()
-        {
+        //[AllowAnonymous]
+        //public IActionResult Index()
+        //{
             
-            return View(_photoService.FindAll());
-        }
+        //    return View(_photoService.FindAll());
+        //}
 
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View(new Photo() { AuthorsList = CreateAuthorList() });
-        }
+        //[Authorize(Roles = "admin,user")]
+        //[HttpGet]
+        //public IActionResult Create()
+        //{
+        //    return View(new Photo() { AuthorsList = CreateAuthorList() });
+        //}
 
         private List<SelectListItem> CreateAuthorList()
         {
@@ -41,27 +41,28 @@ namespace Laboratorium_3___Homework.Controllers
             return authors;
         }
 
+        //[Authorize(Roles = "admin,user")]
+        //[HttpPost]
+        //public IActionResult Create(Photo model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _photoService.Add(model);
+        //        return RedirectToAction("PagedIndex");
 
+        //    }
+        //    model.AuthorsList = CreateAuthorList();
+        //    return View();
+        //}
 
-        [HttpPost]
-        public IActionResult Create(Photo model)
-        {
-            if (ModelState.IsValid)
-            {
-                _photoService.Add(model);
-                return RedirectToAction("PagedIndex");
-
-            }
-            model.AuthorsList = CreateAuthorList();
-            return View();
-        }
-
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public IActionResult Delete(int id)
         {
             return View(_photoService.FindById(id));
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Delete(Photo model)
         {
@@ -71,12 +72,14 @@ namespace Laboratorium_3___Homework.Controllers
             return RedirectToAction("PagedIndex");
         }
 
+        [Authorize(Roles = "admin,user")]
         [HttpGet]
         public IActionResult Update(int id)
         {
             return View(_photoService.FindById(id));
         }
 
+        [Authorize(Roles = "admin,user")]
         [HttpPost]
         public IActionResult Update(Photo model)
         {
@@ -88,9 +91,11 @@ namespace Laboratorium_3___Homework.Controllers
             return View();
         }
 
+        [Authorize(Roles = "admin,user,guest")]
         [HttpGet]
         public IActionResult Details(int id)
         {
+            Console.WriteLine(id);
             var find = _photoService.FindById(id);
             if (find == null)
             {
@@ -100,12 +105,14 @@ namespace Laboratorium_3___Homework.Controllers
             return View(_photoService.FindById(id));
         }
 
+        [Authorize(Roles = "admin,user, guest")]
         [HttpPost]
         public IActionResult Details()
         {
             return RedirectToAction("PagedIndex");
         }
 
+        [Authorize(Roles = "admin,user")]
         [HttpGet]
         public IActionResult CreateApi()
         {
@@ -113,6 +120,16 @@ namespace Laboratorium_3___Homework.Controllers
 
         }
 
+        [Authorize(Roles = "admin, user, guest")]
+        [HttpGet]
+        public IActionResult CreateComment(int id)
+        {
+            ViewBag.PhotoId = id;
+            return View();
+
+        }
+
+        [Authorize(Roles = "admin,user")]
         [HttpPost]
         public IActionResult CreateApi(Photo photo)
         {
@@ -140,12 +157,13 @@ namespace Laboratorium_3___Homework.Controllers
             {
                 photo.AuthorsList = CreateAuthorList();
             }
-            Console.WriteLine("DUPA DUPA");
 
             ViewBag.AuthorId = authorId;
             return View(x);
         }
 
+
+        [Authorize(Roles = "admin,user")]
         [HttpGet]
         public IActionResult RecentlyDeleted()
         {
@@ -153,12 +171,11 @@ namespace Laboratorium_3___Homework.Controllers
             {
                 Console.WriteLine(x);
             }
-            Console.WriteLine("DUPA DUPA");
             return View(_photoService.FindAllRecent());
         }
 
-        
 
+        [Authorize(Roles = "admin,user")]
         public IActionResult Restore(int id)
         {
             var restoredPhoto = _photoService.FindByIdRestore(id);
@@ -172,6 +189,7 @@ namespace Laboratorium_3___Homework.Controllers
         }
 
 
+        [Authorize(Roles = "admin,user")]
         [HttpGet]
         public IActionResult DetailsDeleted(int id)
         {
@@ -184,6 +202,7 @@ namespace Laboratorium_3___Homework.Controllers
             return View(_photoService.FindByIdRestore(id));
         }
 
+        [Authorize(Roles = "admin,user")]
         [HttpPost]
         public IActionResult DetailsDeleted()
         {

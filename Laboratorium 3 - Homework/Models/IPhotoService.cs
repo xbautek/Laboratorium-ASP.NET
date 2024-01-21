@@ -10,10 +10,7 @@ namespace Laboratorium_3___Homework.Models
         void RemoveById(int id);
         void DeleteRecent(Photo photo);
         List<Photo> FindAllRecent();
-
         Photo? FindByIdRestore(int id);
-
-
         void Update(Photo photo);
         List<Photo> FindAll();
         Photo? FindById(int id);

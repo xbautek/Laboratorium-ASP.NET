@@ -1,0 +1,85 @@
+﻿@model List<Comment>
+
+<style>
+    /* Dodaj ten fragment do pliku Index.cshtml */
+
+    body {
+        font-family: Tahoma;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+
+
+    .btn-primary,
+    .btn-info,
+    .btn-outline-info,
+    .btn-outline-success,
+    .btn-outline-danger {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+        color: #fff;
+    }
+
+        .btn-primary:hover,
+        .btn-info:hover,
+        .btn-outline-info:hover,
+        .btn-outline-success:hover,
+        .btn-outline-danger:hover {
+            background-color: #31b0d5;
+            border-color: #269abc;
+            color: #fff;
+        }
+
+</style>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj nowego autora</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].PhotoDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].UserId)
+            </th>
+            <th>
+                Akcje
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Content
+                </td>
+                <td>
+                    @item.PhotoDescription
+                </td>
+                <td>
+                    @item.Username
+                </td>
+                <td class="table-actions">
+                    @*<a class="btn btn-outline-info btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-outline-success btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

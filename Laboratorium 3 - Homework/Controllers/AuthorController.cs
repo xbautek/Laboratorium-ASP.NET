@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Laboratorium_3___Homework.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +22,6 @@ namespace Laboratorium_3___Homework.Controllers
             _context = context;
         }
 
-        // GET: Author
         public async Task<IActionResult> Index()
         {
               return _context.Authors != null ? 
@@ -28,7 +29,7 @@ namespace Laboratorium_3___Homework.Controllers
                           Problem("Entity set 'AppDbContext.Authors'  is null.");
         }
 
-        // GET: Author/Details/5
+        [Authorize(Roles = "admin,user,guest")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Authors == null)
@@ -46,15 +47,13 @@ namespace Laboratorium_3___Homework.Controllers
             return View(authorEntity);
         }
 
-        // GET: Author/Create
+        [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Author/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Create(AuthorEntity authorEntity)
         {
@@ -69,7 +68,6 @@ namespace Laboratorium_3___Homework.Controllers
             }
             catch (Exception ex)
             {
-                // Zaloguj informacje o błędzie.
                 Console.WriteLine(ex.Message);
             }
 
@@ -91,7 +89,7 @@ namespace Laboratorium_3___Homework.Controllers
         }
         */
 
-        // GET: Author/Edit/5
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Authors == null)
@@ -107,9 +105,7 @@ namespace Laboratorium_3___Homework.Controllers
             return View(authorEntity);
         }
 
-        // POST: Author/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Email")] AuthorEntity authorEntity)
@@ -142,7 +138,7 @@ namespace Laboratorium_3___Homework.Controllers
             return View(authorEntity);
         }
 
-        // GET: Author/Delete/5
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             
@@ -170,7 +166,7 @@ namespace Laboratorium_3___Homework.Controllers
         }
 
 
-        // POST: Author/Delete/5
+        [Authorize(Roles = "admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -193,8 +189,6 @@ namespace Laboratorium_3___Homework.Controllers
             }
             catch (Exception ex)
             {
-                // Tutaj możesz dodać logowanie błędu, jeśli to konieczne
-
                 return RedirectToAction("DeleteError");
             }
         }

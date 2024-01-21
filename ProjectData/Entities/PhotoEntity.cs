@@ -28,5 +28,7 @@ namespace ProjectData.Entities
 
         public AuthorEntity? Author { get; set; }
         public int? AuthorId { get; set; }
+        public List<CommentEntity> Comments { get; set; }
+
     }
 }

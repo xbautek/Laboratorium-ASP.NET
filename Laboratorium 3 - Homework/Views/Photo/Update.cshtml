@@ -40,7 +40,8 @@
 <h1>Zamień dane zdjęcia</h1>
 
 <form asp-controller="Photo" asp-action="Update" method="post">
-    <input asp-for="Id" />
+    <input asp-for="Id" type="hidden"/>
+    <input asp-for="AuthorId" type="hidden" />
 
     <div class="mb-3">
         <label asp-for="DateAndTime"></label>
