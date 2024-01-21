@@ -1,0 +1,69 @@
+﻿@model List<Photo>
+
+@{
+    ViewData["Title"] = "Recently Deleted Photos";
+}
+
+<style>
+    body {
+        font-family: Tahoma;
+    }
+
+    h3 {
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin-top: 0;
+    }
+
+    .btn-primary {
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #31b0d5;
+            border-color: #269abc;
+            color: #fff;
+        }
+</style>
+
+<h1>Ostatnio usunięte zdjęcia</h1>
+
+@if (Model.Count == 0)
+{
+    <p>Żadne zdjęcia nie zostały ostatnio usunięte</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date and Time</th>
+                <th>Camera</th>
+                <th>Format</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var photo in Model)
+            {
+                <tr>
+                    <td>@photo.DateAndTime</td>
+                    <td>@photo.Camera</td>
+                    <td>@photo.Format.GetDisplayName()</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="DetailsDeleted" asp-route-id="@photo.Id">Szczegóły</a>
+                        <a class="btn btn-primary" asp-action="Restore" asp-route-id="@photo.Id">Przywróć</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<form asp-action="Details">
+    <button class="btn btn-primary" type="submit">Wróć</button>
+</form>

@@ -1,8 +1,38 @@
 ﻿@{
-    ViewData["Title"] = "DeleteError";
+    ViewData["Title"] = "Błąd podczas usuwania";
 }
+
+<style>
+    /* Dodaj ten fragment do pliku DeleteError.cshtml */
+
+    body {
+        font-family: Tahoma; /* Zmień na preferowaną czcionkę */
+    }
+
+    h1 {
+        font-size: 28px;
+        color: #dc3545;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary{
+        background-color: #5bc0de;
+        border-color: #5bc0de;
+        color: #fff;
+    }
+
+        .btn-primary:hover{
+            background-color: #31b0d5;
+            border-color: #269abc;
+            color: #fff;
+        }
+</style>
 
 <h1 class="text-danger">Wystąpił błąd podczas usuwania Autora</h1>
 <p>Powodem błędu jest brak możliwości usunięcia autora ze względu na fakt, że ten autor jest przypisany do pewnego zdjęcia.</p>
 
-<a asp-action="Index">Back to Authors</a>
+<a class="btn btn-primary" asp-action="Index">Powrót do Autorów</a>

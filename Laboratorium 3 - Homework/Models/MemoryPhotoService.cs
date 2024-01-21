@@ -1,4 +1,5 @@
 ﻿using Laboratorium_3___Homework.Mappers;
+using Microsoft.Extensions.Caching.Memory;
 using ProjectData;
 using ProjectData.Entities;
 using SQLitePCL;
@@ -8,10 +9,40 @@ namespace Laboratorium_3___Homework.Models
     public class MemoryPhotoService : IPhotoService
     {
         private readonly AppDbContext _context;
+        private readonly IMemoryCache _memoryCache;
 
-        public MemoryPhotoService(AppDbContext context)
+
+        public MemoryPhotoService(AppDbContext context, IMemoryCache memoryCache)
         {
             _context = context;
+            _memoryCache = memoryCache;
+        }
+
+        public List<Photo> RecentlyDeletedPhotos
+        {
+            get
+            {
+                if (!_memoryCache.TryGetValue("RecentlyDeletedPhotos", out List<Photo> photos))
+                {
+                    photos = new List<Photo>();
+                    _memoryCache.Set("RecentlyDeletedPhotos", photos, new MemoryCacheEntryOptions
+                    {
+                        AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(100) // Ustaw odpowiedni czas wygaśnięcia
+                    });
+                }
+
+                return photos;
+            }
+        }
+
+        public void AddRecent(Photo photo)
+        {
+            RecentlyDeletedPhotos.Add(PhotoMapper.FromEntity(_context.Photos.Find(photo.Id)));
+        }
+
+        public void DeleteRecent(Photo photo)
+        {
+            RecentlyDeletedPhotos.Remove(photo);
         }
 
         public void Add(Photo photo)
@@ -84,6 +115,16 @@ namespace Laboratorium_3___Homework.Models
                 totalCount
             );
             return result;
+        }
+
+        public List<Photo> FindAllRecent()
+        {
+            return RecentlyDeletedPhotos.ToList();
+        }
+
+        public Photo? FindByIdRestore(int id)
+        {
+            return RecentlyDeletedPhotos.FirstOrDefault(photo => photo.Id == id);
         }
     }
 }

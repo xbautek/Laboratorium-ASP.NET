@@ -11,6 +11,7 @@ namespace Laboratorium_3___Homework.Controllers
     {
         private readonly IPhotoService _photoService;
 
+
         public PhotoController(IPhotoService photoService)
         {
             _photoService = photoService;
@@ -64,6 +65,7 @@ namespace Laboratorium_3___Homework.Controllers
         [HttpPost]
         public IActionResult Delete(Photo model)
         {
+            _photoService.AddRecent(model);
             _photoService.RemoveById(model.Id);
 
             return RedirectToAction("PagedIndex");
@@ -138,11 +140,54 @@ namespace Laboratorium_3___Homework.Controllers
             {
                 photo.AuthorsList = CreateAuthorList();
             }
+            Console.WriteLine("DUPA DUPA");
 
-            ViewBag.AuthorId = authorId; // Dodaj tę linię
-
+            ViewBag.AuthorId = authorId;
             return View(x);
         }
 
+        [HttpGet]
+        public IActionResult RecentlyDeleted()
+        {
+            foreach(var x in _photoService.FindAllRecent())
+            {
+                Console.WriteLine(x);
+            }
+            Console.WriteLine("DUPA DUPA");
+            return View(_photoService.FindAllRecent());
+        }
+
+        
+
+        public IActionResult Restore(int id)
+        {
+            var restoredPhoto = _photoService.FindByIdRestore(id);
+            if (restoredPhoto != null)
+            {
+                _photoService.DeleteRecent(restoredPhoto);
+                _photoService.Add(restoredPhoto);
+            }
+
+            return RedirectToAction("RecentlyDeleted");
+        }
+
+
+        [HttpGet]
+        public IActionResult DetailsDeleted(int id)
+        {
+            var find = _photoService.FindByIdRestore(id);
+            if (find == null)
+            {
+                return NotFound();
+            }
+
+            return View(_photoService.FindByIdRestore(id));
+        }
+
+        [HttpPost]
+        public IActionResult DetailsDeleted()
+        {
+            return RedirectToAction("RecentlyDeleted");
+        }
     }
 }
