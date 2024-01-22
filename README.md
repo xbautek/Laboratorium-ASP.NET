@@ -14,12 +14,15 @@ Dane przykładowych użytkowników:
 1.Admin – rola admin
 Email: admin@wsei.edu.pl
 Hasło: 1234Ab!
+
 2.User – rola user
 Email: user@wsei.edu.pl
 Hasło: 1928@AB
+
 3.Guest – rola guest
 Email: guest@wsei.edu.pl
 Hasło: Abc123#
+
 4. Adamk01 – rola user
 Email: adamk01@gmail.com
 Hasło: Adam123@
