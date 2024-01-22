@@ -9,21 +9,13 @@
         font-family: Tahoma;
     }
 
-    .btn-primary,
-    .btn-info,
-    .btn-outline-info,
-    .btn-outline-success,
-    .btn-outline-danger {
+    .btn-primary{
         background-color: #5bc0de;
         border-color: #5bc0de;
         color: #fff;
     }
 
-        .btn-primary:hover,
-        .btn-info:hover,
-        .btn-outline-info:hover,
-        .btn-outline-success:hover,
-        .btn-outline-danger:hover {
+        .btn-primary:hover{
             background-color: #31b0d5;
             border-color: #269abc;
             color: #fff;
@@ -37,6 +29,7 @@
     <div class="col-md-6">
         <form asp-controller="Comment" asp-action="Create" method="post">
             <input type="hidden" asp-for="PhotoId" value=@ViewBag.PhotoId />
+            <input asp-for="PhotoId" type="hidden" name="photoId" />
 
             <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>

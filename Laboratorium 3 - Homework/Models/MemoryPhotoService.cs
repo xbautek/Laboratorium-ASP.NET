@@ -56,11 +56,6 @@ namespace Laboratorium_3___Homework.Models
             return _context.Photos.Select(e => PhotoMapper.FromEntity(e)).ToList();
         }
 
-      //  public PagingList<Photo> FindPagingAll()
-      //  {
-        //    return _context.Photos.Select(e => PhotoMapper.FromEntity(e)).ToList();
-       // }
-
         public List<AuthorEntity> FindAllAuthorsForViewModel()
         {
             return _context.Authors.ToList();
@@ -68,7 +63,6 @@ namespace Laboratorium_3___Homework.Models
 
         public Photo? FindById(int id)
         {
-            //            return _contacts.ContainsKey(id) ? _contacts[id] : null;
             return PhotoMapper.FromEntity(_context.Photos.Find(id));
         }
 

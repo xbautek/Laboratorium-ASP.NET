@@ -11,7 +11,6 @@ namespace Laboratorium_3___Homework.Models
         public string Content { get; set; }
 
         public int PhotoId { get; set; }
-        //public PhotoEntity? Photo { get; set; }
         [Display(Name = "Opis zdjęcia")]
         public string? PhotoDescription { get; set; }
         [Display(Name = "Uzytkownik")]

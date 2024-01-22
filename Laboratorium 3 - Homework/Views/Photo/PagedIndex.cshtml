@@ -9,21 +9,13 @@
         font-family: Tahoma;
     }
 
-    .btn-primary,
-    .btn-info,
-    .btn-outline-info,
-    .btn-outline-success,
-    .btn-outline-danger {
+    .btn-primary{
         background-color: #5bc0de;
         border-color: #5bc0de;
         color: #fff;
     }
 
-        .btn-primary:hover,
-        .btn-info:hover,
-        .btn-outline-info:hover,
-        .btn-outline-success:hover,
-        .btn-outline-danger:hover {
+        .btn-primary:hover{
             background-color: #31b0d5;
             border-color: #269abc;
             color: #fff;
@@ -78,11 +70,48 @@
                         }
                     </select>
                 </div>
-                <button type="submit" class="btn btn-info">Filtruj</button>
+                <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Filtruj zdjęcia">
+                    Filtruj
+                </button>
+                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Otwórz Api w nowej karcie" onclick="openNewTab()">
+                    Otwórz Api w nowej karcie
+                </button>
+
+                <button type="button" class="btn btn-primary" onclick="redirectToApi()">Przejdź do API</button>
+
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    function openNewTab() {
+        var authorId = document.getElementById('authorId').value;
+        if (authorId) {
+            var url = 'https://localhost:7053/api/photos/ByAuthor/' + authorId;
+            window.open(url);
+        } else {
+            alert('Proszę wybrać autora.');
+        }
+    }
+
+    function redirectToApi() {
+        var authorId = document.getElementById('authorId').value;
+
+        if (authorId) {
+            var url = 'https://localhost:7053/api/photos/ByAuthor/' + authorId;
+            window.location.href = url;
+        } else {
+            alert('Proszę wybrać autora.');
+        }
+    }
+</script>
+
+
 
 @if (Model.Data.Count() > 0)
 {
@@ -131,10 +160,10 @@
                         }
                     </td>
                     <td>
-                        <a class="btn btn-outline-info btn-sm" asp-action="Details" asp-route-id=@item.Id>Szczegóły</a>
-                        <a class="btn btn-outline-success btn-sm" asp-action="Update" asp-route-id=@item.Id>Edycja</a>
-                        <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id=@item.Id>Usuń</a>
-                        <a class="btn btn-outline-danger btn-sm"  asp-action="CreateComment" asp-route-id=@item.Id>Skomentuj</a>
+                        <a class="btn btn-primary" asp-controller="Comment" asp-action="Index" asp-route-id=@item.Id>Komentarze</a>
+                        <a class="btn btn-primary" asp-action="Details" asp-route-id=@item.Id>Szczegóły</a>
+                        <a class="btn btn-primary" asp-action="Update" asp-route-id=@item.Id>Edycja</a>
+                        <a class="btn btn-primary" asp-action="Delete" asp-route-id=@item.Id>Usuń</a>
                     </td>
                 </tr>
             }
@@ -159,7 +188,7 @@
             else
             {
                 <li class="page-item disabled">
-                    <a style="height:35px" class="btn btn-outline-danger btn-sm" class="page-link" tabindex="-1" aria-disabled="true">Poprzednia</a>
+                    <a style="height:35px" class="btn btn-primary" class="page-link" tabindex="-1" aria-disabled="true">Poprzednia</a>
                 </li>
             }
             <li class="page-item disabled">
@@ -181,12 +210,12 @@
             else
             {
                 <li class="page-item disabled">
-                    <a style="height:35px" class="btn btn-outline-danger btn-sm" class="page-link" tabindex="-1" aria-disabled="true">Następna</a>
+                    <a style="height:35px" class="btn btn-primary" class="page-link" tabindex="-1" aria-disabled="true">Następna</a>
                 </li>
             }
         </ul>
 
-        <a class="btn btn-outline-danger btn-sm" asp-action="RecentlyDeleted">Ostatnio usunięte</a>
+        <a class="btn btn-primary" asp-action="RecentlyDeleted">Ostatnio usunięte</a>
     </nav>
 }
 else

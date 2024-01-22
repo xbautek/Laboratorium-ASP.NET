@@ -1,8 +1,6 @@
 ﻿@model List<Comment>
 
 <style>
-    /* Dodaj ten fragment do pliku Index.cshtml */
-
     body {
         font-family: Tahoma;
     }
@@ -12,28 +10,17 @@
         margin-top: 20px;
     }
 
-
-
-    .btn-primary,
-    .btn-info,
-    .btn-outline-info,
-    .btn-outline-success,
-    .btn-outline-danger {
+    .btn-primary{
         background-color: #5bc0de;
         border-color: #5bc0de;
         color: #fff;
     }
 
-        .btn-primary:hover,
-        .btn-info:hover,
-        .btn-outline-info:hover,
-        .btn-outline-success:hover,
-        .btn-outline-danger:hover {
+        .btn-primary:hover{
             background-color: #31b0d5;
             border-color: #269abc;
             color: #fff;
         }
-
 </style>
 
 @{
@@ -41,9 +28,6 @@
 }
 
 <br />
-<p>
-    <a asp-action="Create" class="btn btn-primary">Dodaj nowego autora</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -75,11 +59,15 @@
                     @item.Username
                 </td>
                 <td class="table-actions">
-                    @*<a class="btn btn-outline-info btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    <a class="btn btn-outline-success btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                    <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+
+<div class="form-group">
+    <a class="btn btn-primary" asp-controller="Photo" asp-action="PagedIndex">Wróć do listy</a>
+    <a class="btn btn-primary" asp-controller="Photo" asp-action="CreateComment" asp-route-id=@ViewBag.PhotoId>Skomentuj</a>
+</div>
