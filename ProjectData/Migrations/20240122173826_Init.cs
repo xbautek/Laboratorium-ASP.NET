@@ -222,9 +222,9 @@ namespace ProjectData.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "54184dae-8e3f-47f9-8bbc-c2b237ff2354", "54184dae-8e3f-47f9-8bbc-c2b237ff2354", "admin", "ADMIN" },
-                    { "d7d94954-7317-4687-99b3-c042ab336690", "d7d94954-7317-4687-99b3-c042ab336690", "user", "USER" },
-                    { "f7d01f2d-7baa-4c13-aa1a-fcd2654ea446", "f7d01f2d-7baa-4c13-aa1a-fcd2654ea446", "guest", "GUEST" }
+                    { "1d020b29-d905-4466-bda2-6a261daa34bf", "1d020b29-d905-4466-bda2-6a261daa34bf", "user", "USER" },
+                    { "2b090bad-a9b9-4cb2-b134-577031a6efb2", "2b090bad-a9b9-4cb2-b134-577031a6efb2", "guest", "GUEST" },
+                    { "a81ad496-ec11-4ba4-8c1e-ab7bfe14bc46", "a81ad496-ec11-4ba4-8c1e-ab7bfe14bc46", "admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -232,10 +232,10 @@ namespace ProjectData.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "55063f64-92af-472e-99d5-32c543c41907", 0, "c17f59ff-6c37-460d-ac06-192886d9c60d", "admin@wsei.edu.pl", true, false, null, "ADMIN@WSEI.EDU.PL", "ADMIN", "AQAAAAEAACcQAAAAENVCYmF1z0I8kCM48Tx7dq9WonxaUv9ZwMvZGvBuXuX0b18Fk2ZZGhOqlpy0W5/veA==", null, false, "58d2176f-ddb9-4a9d-af61-0b2b210a87a8", false, "admin" },
-                    { "5c0363c7-1892-4341-ae7f-29aaeaae99e6", 0, "cc53340b-81f3-4ef7-a08c-5a385b3abe30", "user@wsei.edu.pl", true, false, null, "USER@WSEI.EDU.PL", "USER", "AQAAAAEAACcQAAAAEB9BedLXLZkIA04VncWMJvvvLxrw9STec1bJIPd5OrMpbwr25IWtiYqY8BKkkdL5mg==", null, false, "bbd77147-b27c-4b5a-a075-ce9f9812a9e5", false, "user" },
-                    { "93cfb92f-1204-4786-90d8-6506ef00c814", 0, "c21e1ead-b245-4315-a4f1-8e83cc1b0467", "adamk01@gmail.com", true, false, null, "ADAMK01@GMAIL.COM", "ADAMK01", "AQAAAAEAACcQAAAAEOaenREuxYUHgtcuhohCsQUkxV7Lr5N7tXF1lcOO1hItCRcRXSGxNUhdyven4aiixg==", null, false, "56c8a471-626c-4c49-af99-bebf202183ae", false, "adamk01" },
-                    { "df68d24a-19eb-4190-9796-1b5fabd04e50", 0, "e0ebcbd5-75c5-4261-9b61-9a6306b460f4", "test@wsei.edu.pl", true, false, null, "TEST@WSEI.EDU.PL", "TEST", "AQAAAAEAACcQAAAAEHjLiZ5wWCsxaSLLz+e9IRjvdju3cjZX9NwSJVPLc45Ul+rgbKkZOfsIQWTGIvOQvQ==", null, false, "12dc1f12-8131-4cc8-9d86-9585b9f04ea5", false, "test" }
+                    { "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f", 0, "3ea9f769-28d3-4eb8-bdd8-1e57b803631f", "guest@wsei.edu.pl", true, false, null, "GUEST@WSEI.EDU.PL", "GUEST", "AQAAAAEAACcQAAAAEHV0KBjwVjfFECa5w/OEI3v1fZ2dOthe8Xz1kZbI7Jf2ZBWYhhyTrh7hTTxBLHOpyg==", null, false, "1e3e18a9-72d6-4fbb-afdb-789b326ad117", false, "guest" },
+                    { "46b1fa49-b265-4e5d-acad-91c965e3a0ae", 0, "0cfddf7a-f83c-41d2-9000-686f74ef054e", "user@wsei.edu.pl", true, false, null, "USER@WSEI.EDU.PL", "USER", "AQAAAAEAACcQAAAAECRSCo1zN65h4+OM94toh0Xwn9UkVp53GdIJmupxJUC2XTB4vVgT1JVKw62RQXh3WA==", null, false, "0858ac14-63a4-4ff7-ba06-4ad3861e6902", false, "user" },
+                    { "4d8f9321-672c-4191-9c0a-9bcd00630a42", 0, "547827d1-1f86-41ca-ac2e-e602e4c5ed20", "adamk01@gmail.com", true, false, null, "ADAMK01@GMAIL.COM", "ADAMK01", "AQAAAAEAACcQAAAAEBAfWWqzsK6XztCfE7VmyDuZQz7hlFtSx/uMUJV+cZaSEeC3qsATrnSOsgECMEaB5Q==", null, false, "ab6271b0-3269-4b8c-8bff-f3fbb49d6017", false, "adamk01" },
+                    { "fec01f71-68a6-4858-9ed6-b2a4b10a6ba9", 0, "2d6d9628-913e-43b5-9e66-2ae96797d612", "admin@wsei.edu.pl", true, false, null, "ADMIN@WSEI.EDU.PL", "ADMIN", "AQAAAAEAACcQAAAAEHyJy4/EZ91RaFbw7aA09HEUNWjz+4mgAwtZcSWsyjCd5Gixzd5I3ErUDaPKVM5oUA==", null, false, "9500a2d2-56d6-4b1e-8e2b-93d74c56e2b3", false, "admin" }
                 });
 
             migrationBuilder.InsertData(
@@ -260,10 +260,10 @@ namespace ProjectData.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "54184dae-8e3f-47f9-8bbc-c2b237ff2354", "55063f64-92af-472e-99d5-32c543c41907" },
-                    { "d7d94954-7317-4687-99b3-c042ab336690", "5c0363c7-1892-4341-ae7f-29aaeaae99e6" },
-                    { "d7d94954-7317-4687-99b3-c042ab336690", "93cfb92f-1204-4786-90d8-6506ef00c814" },
-                    { "f7d01f2d-7baa-4c13-aa1a-fcd2654ea446", "df68d24a-19eb-4190-9796-1b5fabd04e50" }
+                    { "2b090bad-a9b9-4cb2-b134-577031a6efb2", "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f" },
+                    { "1d020b29-d905-4466-bda2-6a261daa34bf", "46b1fa49-b265-4e5d-acad-91c965e3a0ae" },
+                    { "1d020b29-d905-4466-bda2-6a261daa34bf", "4d8f9321-672c-4191-9c0a-9bcd00630a42" },
+                    { "a81ad496-ec11-4ba4-8c1e-ab7bfe14bc46", "fec01f71-68a6-4858-9ed6-b2a4b10a6ba9" }
                 });
 
             migrationBuilder.InsertData(
@@ -288,16 +288,16 @@ namespace ProjectData.Migrations
                 columns: new[] { "comment_id", "Comment", "PhotoId", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Amazing shot!", 1, "55063f64-92af-472e-99d5-32c543c41907" },
-                    { 2, "Spooky atmosphere!", 2, "5c0363c7-1892-4341-ae7f-29aaeaae99e6" },
-                    { 3, "Beautiful beach day!", 3, "df68d24a-19eb-4190-9796-1b5fabd04e50" },
-                    { 4, "Adventurous journey!", 4, "5c0363c7-1892-4341-ae7f-29aaeaae99e6" },
-                    { 5, "Stunning sunset!", 5, "df68d24a-19eb-4190-9796-1b5fabd04e50" },
-                    { 6, "City lights are magical!", 6, "55063f64-92af-472e-99d5-32c543c41907" },
-                    { 7, "Cherry blossoms are my favorite!", 7, "55063f64-92af-472e-99d5-32c543c41907" },
-                    { 8, "Impressive mountain view!", 8, "5c0363c7-1892-4341-ae7f-29aaeaae99e6" },
-                    { 9, "Aerial views are mesmerizing!", 9, "55063f64-92af-472e-99d5-32c543c41907" },
-                    { 10, "Starry night, truly magical!", 10, "df68d24a-19eb-4190-9796-1b5fabd04e50" }
+                    { 1, "Amazing shot!", 1, "4d8f9321-672c-4191-9c0a-9bcd00630a42" },
+                    { 2, "Spooky atmosphere!", 2, "46b1fa49-b265-4e5d-acad-91c965e3a0ae" },
+                    { 3, "Beautiful beach day!", 3, "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f" },
+                    { 4, "Adventurous journey!", 4, "46b1fa49-b265-4e5d-acad-91c965e3a0ae" },
+                    { 5, "Stunning sunset!", 5, "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f" },
+                    { 6, "City lights are magical!", 6, "fec01f71-68a6-4858-9ed6-b2a4b10a6ba9" },
+                    { 7, "Cherry blossoms are my favorite!", 7, "fec01f71-68a6-4858-9ed6-b2a4b10a6ba9" },
+                    { 8, "Impressive mountain view!", 8, "46b1fa49-b265-4e5d-acad-91c965e3a0ae" },
+                    { 9, "Aerial views are mesmerizing!", 9, "4d8f9321-672c-4191-9c0a-9bcd00630a42" },
+                    { 10, "Starry night, truly magical!", 10, "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f" }
                 });
 
             migrationBuilder.CreateIndex(

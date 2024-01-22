@@ -59,10 +59,10 @@ namespace ProjectData
             var user2 = new IdentityUser()
             {
                 Id = Guid.NewGuid().ToString(),
-                UserName = "test",
-                NormalizedUserName = "TEST",
-                Email = "test@wsei.edu.pl",
-                NormalizedEmail = "TEST@WSEI.EDU.PL",
+                UserName = "guest",
+                NormalizedUserName = "GUEST",
+                Email = "guest@wsei.edu.pl",
+                NormalizedEmail = "GUEST@WSEI.EDU.PL",
                 EmailConfirmed = true,
             };
 
@@ -342,7 +342,7 @@ namespace ProjectData
                 Id = 1,
                 Comment = "Amazing shot!",
                 PhotoId = 1,
-                UserId = user.Id
+                UserId = adamk01.Id
             },
             new CommentEntity()
             {
@@ -398,7 +398,7 @@ namespace ProjectData
                 Id = 9,
                 Comment = "Aerial views are mesmerizing!",
                 PhotoId = 9,
-                UserId = user.Id
+                UserId = adamk01.Id
             },
             new CommentEntity()
             {

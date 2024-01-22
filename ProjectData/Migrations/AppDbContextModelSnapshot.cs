@@ -45,22 +45,22 @@ namespace ProjectData.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "54184dae-8e3f-47f9-8bbc-c2b237ff2354",
-                            ConcurrencyStamp = "54184dae-8e3f-47f9-8bbc-c2b237ff2354",
+                            Id = "a81ad496-ec11-4ba4-8c1e-ab7bfe14bc46",
+                            ConcurrencyStamp = "a81ad496-ec11-4ba4-8c1e-ab7bfe14bc46",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d7d94954-7317-4687-99b3-c042ab336690",
-                            ConcurrencyStamp = "d7d94954-7317-4687-99b3-c042ab336690",
+                            Id = "1d020b29-d905-4466-bda2-6a261daa34bf",
+                            ConcurrencyStamp = "1d020b29-d905-4466-bda2-6a261daa34bf",
                             Name = "user",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "f7d01f2d-7baa-4c13-aa1a-fcd2654ea446",
-                            ConcurrencyStamp = "f7d01f2d-7baa-4c13-aa1a-fcd2654ea446",
+                            Id = "2b090bad-a9b9-4cb2-b134-577031a6efb2",
+                            ConcurrencyStamp = "2b090bad-a9b9-4cb2-b134-577031a6efb2",
                             Name = "guest",
                             NormalizedName = "GUEST"
                         });
@@ -155,65 +155,65 @@ namespace ProjectData.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "55063f64-92af-472e-99d5-32c543c41907",
+                            Id = "fec01f71-68a6-4858-9ed6-b2a4b10a6ba9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c17f59ff-6c37-460d-ac06-192886d9c60d",
+                            ConcurrencyStamp = "2d6d9628-913e-43b5-9e66-2ae96797d612",
                             Email = "admin@wsei.edu.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@WSEI.EDU.PL",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAENVCYmF1z0I8kCM48Tx7dq9WonxaUv9ZwMvZGvBuXuX0b18Fk2ZZGhOqlpy0W5/veA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHyJy4/EZ91RaFbw7aA09HEUNWjz+4mgAwtZcSWsyjCd5Gixzd5I3ErUDaPKVM5oUA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "58d2176f-ddb9-4a9d-af61-0b2b210a87a8",
+                            SecurityStamp = "9500a2d2-56d6-4b1e-8e2b-93d74c56e2b3",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
                         new
                         {
-                            Id = "5c0363c7-1892-4341-ae7f-29aaeaae99e6",
+                            Id = "46b1fa49-b265-4e5d-acad-91c965e3a0ae",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cc53340b-81f3-4ef7-a08c-5a385b3abe30",
+                            ConcurrencyStamp = "0cfddf7a-f83c-41d2-9000-686f74ef054e",
                             Email = "user@wsei.edu.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@WSEI.EDU.PL",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEB9BedLXLZkIA04VncWMJvvvLxrw9STec1bJIPd5OrMpbwr25IWtiYqY8BKkkdL5mg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECRSCo1zN65h4+OM94toh0Xwn9UkVp53GdIJmupxJUC2XTB4vVgT1JVKw62RQXh3WA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bbd77147-b27c-4b5a-a075-ce9f9812a9e5",
+                            SecurityStamp = "0858ac14-63a4-4ff7-ba06-4ad3861e6902",
                             TwoFactorEnabled = false,
                             UserName = "user"
                         },
                         new
                         {
-                            Id = "df68d24a-19eb-4190-9796-1b5fabd04e50",
+                            Id = "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e0ebcbd5-75c5-4261-9b61-9a6306b460f4",
-                            Email = "test@wsei.edu.pl",
+                            ConcurrencyStamp = "3ea9f769-28d3-4eb8-bdd8-1e57b803631f",
+                            Email = "guest@wsei.edu.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "TEST@WSEI.EDU.PL",
-                            NormalizedUserName = "TEST",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHjLiZ5wWCsxaSLLz+e9IRjvdju3cjZX9NwSJVPLc45Ul+rgbKkZOfsIQWTGIvOQvQ==",
+                            NormalizedEmail = "GUEST@WSEI.EDU.PL",
+                            NormalizedUserName = "GUEST",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHV0KBjwVjfFECa5w/OEI3v1fZ2dOthe8Xz1kZbI7Jf2ZBWYhhyTrh7hTTxBLHOpyg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "12dc1f12-8131-4cc8-9d86-9585b9f04ea5",
+                            SecurityStamp = "1e3e18a9-72d6-4fbb-afdb-789b326ad117",
                             TwoFactorEnabled = false,
-                            UserName = "test"
+                            UserName = "guest"
                         },
                         new
                         {
-                            Id = "93cfb92f-1204-4786-90d8-6506ef00c814",
+                            Id = "4d8f9321-672c-4191-9c0a-9bcd00630a42",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c21e1ead-b245-4315-a4f1-8e83cc1b0467",
+                            ConcurrencyStamp = "547827d1-1f86-41ca-ac2e-e602e4c5ed20",
                             Email = "adamk01@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADAMK01@GMAIL.COM",
                             NormalizedUserName = "ADAMK01",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOaenREuxYUHgtcuhohCsQUkxV7Lr5N7tXF1lcOO1hItCRcRXSGxNUhdyven4aiixg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBAfWWqzsK6XztCfE7VmyDuZQz7hlFtSx/uMUJV+cZaSEeC3qsATrnSOsgECMEaB5Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "56c8a471-626c-4c49-af99-bebf202183ae",
+                            SecurityStamp = "ab6271b0-3269-4b8c-8bff-f3fbb49d6017",
                             TwoFactorEnabled = false,
                             UserName = "adamk01"
                         });
@@ -281,23 +281,23 @@ namespace ProjectData.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "55063f64-92af-472e-99d5-32c543c41907",
-                            RoleId = "54184dae-8e3f-47f9-8bbc-c2b237ff2354"
+                            UserId = "fec01f71-68a6-4858-9ed6-b2a4b10a6ba9",
+                            RoleId = "a81ad496-ec11-4ba4-8c1e-ab7bfe14bc46"
                         },
                         new
                         {
-                            UserId = "5c0363c7-1892-4341-ae7f-29aaeaae99e6",
-                            RoleId = "d7d94954-7317-4687-99b3-c042ab336690"
+                            UserId = "46b1fa49-b265-4e5d-acad-91c965e3a0ae",
+                            RoleId = "1d020b29-d905-4466-bda2-6a261daa34bf"
                         },
                         new
                         {
-                            UserId = "df68d24a-19eb-4190-9796-1b5fabd04e50",
-                            RoleId = "f7d01f2d-7baa-4c13-aa1a-fcd2654ea446"
+                            UserId = "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f",
+                            RoleId = "2b090bad-a9b9-4cb2-b134-577031a6efb2"
                         },
                         new
                         {
-                            UserId = "93cfb92f-1204-4786-90d8-6506ef00c814",
-                            RoleId = "d7d94954-7317-4687-99b3-c042ab336690"
+                            UserId = "4d8f9321-672c-4191-9c0a-9bcd00630a42",
+                            RoleId = "1d020b29-d905-4466-bda2-6a261daa34bf"
                         });
                 });
 
@@ -448,70 +448,70 @@ namespace ProjectData.Migrations
                             Id = 1,
                             Comment = "Amazing shot!",
                             PhotoId = 1,
-                            UserId = "55063f64-92af-472e-99d5-32c543c41907"
+                            UserId = "4d8f9321-672c-4191-9c0a-9bcd00630a42"
                         },
                         new
                         {
                             Id = 2,
                             Comment = "Spooky atmosphere!",
                             PhotoId = 2,
-                            UserId = "5c0363c7-1892-4341-ae7f-29aaeaae99e6"
+                            UserId = "46b1fa49-b265-4e5d-acad-91c965e3a0ae"
                         },
                         new
                         {
                             Id = 3,
                             Comment = "Beautiful beach day!",
                             PhotoId = 3,
-                            UserId = "df68d24a-19eb-4190-9796-1b5fabd04e50"
+                            UserId = "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f"
                         },
                         new
                         {
                             Id = 4,
                             Comment = "Adventurous journey!",
                             PhotoId = 4,
-                            UserId = "5c0363c7-1892-4341-ae7f-29aaeaae99e6"
+                            UserId = "46b1fa49-b265-4e5d-acad-91c965e3a0ae"
                         },
                         new
                         {
                             Id = 5,
                             Comment = "Stunning sunset!",
                             PhotoId = 5,
-                            UserId = "df68d24a-19eb-4190-9796-1b5fabd04e50"
+                            UserId = "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f"
                         },
                         new
                         {
                             Id = 6,
                             Comment = "City lights are magical!",
                             PhotoId = 6,
-                            UserId = "55063f64-92af-472e-99d5-32c543c41907"
+                            UserId = "fec01f71-68a6-4858-9ed6-b2a4b10a6ba9"
                         },
                         new
                         {
                             Id = 7,
                             Comment = "Cherry blossoms are my favorite!",
                             PhotoId = 7,
-                            UserId = "55063f64-92af-472e-99d5-32c543c41907"
+                            UserId = "fec01f71-68a6-4858-9ed6-b2a4b10a6ba9"
                         },
                         new
                         {
                             Id = 8,
                             Comment = "Impressive mountain view!",
                             PhotoId = 8,
-                            UserId = "5c0363c7-1892-4341-ae7f-29aaeaae99e6"
+                            UserId = "46b1fa49-b265-4e5d-acad-91c965e3a0ae"
                         },
                         new
                         {
                             Id = 9,
                             Comment = "Aerial views are mesmerizing!",
                             PhotoId = 9,
-                            UserId = "55063f64-92af-472e-99d5-32c543c41907"
+                            UserId = "4d8f9321-672c-4191-9c0a-9bcd00630a42"
                         },
                         new
                         {
                             Id = 10,
                             Comment = "Starry night, truly magical!",
                             PhotoId = 10,
-                            UserId = "df68d24a-19eb-4190-9796-1b5fabd04e50"
+                            UserId = "3f52dbc7-dc23-4ef2-94ce-649ef86dc21f"
                         });
                 });
 
