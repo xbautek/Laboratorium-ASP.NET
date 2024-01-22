@@ -11,6 +11,7 @@ Wykorzystane technologie:
 8.	Baza danych w Sqllite
 
 Dane przykładowych użytkowników:
+
 1.Admin – rola admin
 Email: admin@wsei.edu.pl
 Hasło: 1234Ab!
